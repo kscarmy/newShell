@@ -8,6 +8,7 @@ SRC +=	sources/commands/commandEcho.c \
 		sources/commands/commandUnset.c \
 		sources/commands/commandExport.c \
 		sources/commands/commandPwd.c \
+		sources/commands/commandCd.c \
 
 SRC +=	sources/utils/utilsPrints.c \
 		sources/utils/utilsStrings.c \

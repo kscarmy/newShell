@@ -92,3 +92,12 @@ char *ft_strjoin(char *s1, char *s2){
 	str[i] = '\0';
 	return (str);
 }
+
+void ft_strcpy(char *dest, char *src){
+	int i = 0;
+	while (src[i]){
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+}

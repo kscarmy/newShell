@@ -29,6 +29,9 @@ int ft_exportCheckSep(char *str);
 /*	pwd.c	*/
 void ft_pwd(t_data *d);
 
+/*	cd.c	*/
+void ft_cd(t_data *d, char *path);
+
 /*************/
 /*	UTILS	*/
 /***********/
@@ -47,6 +50,7 @@ char *ft_strdup(const char *s);
 int ft_strlen(const char *str);
 char **ft_strsplit(char *str, char c);
 char *ft_strjoin(char *s1, char *s2);
+void ft_strcpy(char *dest, char *src);
 
 /*	utilsSeparators.c	*/
 int ft_findAllSeparators(char c);
