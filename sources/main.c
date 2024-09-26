@@ -40,21 +40,19 @@ int	main(int argc, char **argv, char **env){
         if (!d->ipt) {
             break; // Sortir si readline échoue (CTRL+D)
         }
-
         // Ajouter l'entrée à l'historique
         add_history(d->ipt);
 
+
+
         // Traiter l'entrée
-		ft_parseOneToken(d);
-		// if (ft_find_cmd_in_str(d->ipt) == CODE_ECHO){
-		// 	ft_echo(d->ipt + ft_size_of_first_word(d->ipt) + 1);
-		// }
-		// else if (ft_find_cmd_in_str(d->ipt) == CODE_EXIT){
-		// 	ft_exit(d);
-		// }
-		// else if (ft_find_cmd_in_str(d->ipt) == CODE_ENV){
-		// 	ft_env(d);
-		// }
+
+		ft_parseOneToken(d);	// parsing
+
+
+		ft_isLocalCommand(d->tok);	// pre-execution
+		ft_exec(d->tok, d);			// execution
+
         // Libérer la mémoire allouée pour l'entrée
 		ft_strdel(&d->ipt);
     }

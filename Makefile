@@ -18,12 +18,18 @@ SRC += 	sources/initializations/initStructData.c \
 
 SRC += sources/parsing/parse.c \
 
+SRC	+=	sources/executions/preExec.c \
+		sources/executions/exec.c \
+
+
+
+
 OBJ	= ${patsubst sources/%, objects/%, $(SRC:.c=.o)}
 
 CC		= gcc
 RM		= rm -rf
-# CFLAGS		= -Wall -Werror -Wextra
-CFLAGS		= 
+CFLAGS		= -Wall -Werror -Wextra
+# CFLAGS		= 
 ## -fsanitize=address -g3
 
 
@@ -43,6 +49,7 @@ objects/%.o: sources/%.c
 	@mkdir -p objects/free
 	@mkdir -p objects/initializations
 	@mkdir -p objects/parsing
+	@mkdir -p objects/executions
 	@$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:

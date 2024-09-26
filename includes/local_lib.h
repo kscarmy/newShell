@@ -2,38 +2,13 @@
 # define LOCAL_LIB_H
 
 /*	main.c	*/
-typedef struct s_env
-{
-	char *name;
-	char *value;
-	struct s_env *next;
-	struct s_env *prev;
-}	t_env;
-
-typedef struct s_token
-{
-	int type; // separator, local command, binary command
-	int sep;	
-	char *pn; // path name, for execve or local command
-	char **arg; // arguments for execve
-	struct s_token *n; // next
-	struct s_token *p; // previous
-}	t_token;
-
-typedef struct s_data
-{
-	char *ipt; // input
-	char **mEnv; // main env
-	t_env *env; // linked list env
-	t_token *tok; // linked list token
-}	t_data;
 
 /*****************/
 /*	COMMANDS	*/
 /***************/
 
 /*	echo.c	*/
-void ft_echo(char *str);
+void ft_echo(char **arg);
 
 /*	exit.c	*/
 void ft_exit(t_data *d);
@@ -50,6 +25,7 @@ void ft_addEnv(t_data *d, char *str);
 void ft_putchar(char c);
 void ft_putstr(char *str);
 void ft_printData(t_data *d);
+void ft_printToken(t_token *t);
 
 /*	strings.c	*/
 int ft_strcmp(const char *s1, const char *s2);
@@ -92,6 +68,18 @@ void ft_initDLinkedListEnv(t_data *d);
 int ft_numberOfArgs(char *str);
 void ft_parseOneToken(t_data *d);
 void ft_mallocToken(t_data *d);
+void ft_mallocArg(t_data *d);
+
+
+/*****************/
+/*	EXECUTIONS	*/
+/***************/
+
+/*	preExec.c	*/
+void ft_isLocalCommand(t_token *t);
+
+/*	exec.c	*/
+void ft_exec(t_token *t, t_data *d);
 
 
 #endif
