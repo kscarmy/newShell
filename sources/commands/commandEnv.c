@@ -1,5 +1,15 @@
 #include "../../includes/newShell.h"
 
+char *ft_findEnvValueByName(t_data *d, char *name){
+	t_env *tmp = d->env;
+	while (tmp){
+		if (ft_strcmp(tmp->name, name) == 0)
+			return (tmp->value);
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
+
 void ft_addEnv(t_data *d, char *str){
 	t_env *new = (t_env *)malloc(sizeof(t_env));
 	if (!new)

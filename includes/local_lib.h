@@ -16,6 +16,7 @@ void ft_exit(t_data *d);
 /*	env.c	*/
 void ft_env(t_data *d);
 void ft_addEnv(t_data *d, char *str);
+char *ft_findEnvValueByName(t_data *d, char *name);
 
 /*************/
 /*	UTILS	*/
@@ -33,6 +34,8 @@ int ft_strncmp(const char *s1, const char *s2, size_t n);
 char *ft_strndup(const char *s, size_t n);
 char *ft_strdup(const char *s);
 int ft_strlen(const char *str);
+char **ft_strsplit(char *str, char c);
+char *ft_strjoin(char *s1, char *s2);
 
 /*	utilsSeparators.c	*/
 int ft_findAllSeparators(char c);
@@ -77,6 +80,7 @@ void ft_mallocArg(t_data *d);
 
 /*	preExec.c	*/
 void ft_isLocalCommand(t_token *t);
+char *ft_findPathName(char *bin, t_data *d);
 
 /*	exec.c	*/
 void ft_exec(t_token *t, t_data *d);

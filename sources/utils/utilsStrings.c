@@ -53,3 +53,42 @@ int ft_strlen(const char *str){
 	}
 	return (i);
 }
+
+char **ft_strsplit(char *str, char c){
+	int i = 0;
+	int j = 0;
+	int k = 0;
+	char **tab;
+	if (!(tab = (char **)malloc(sizeof(char *) * (ft_strlen(str) + 1))))
+		return (NULL);
+	while (str[i]){
+		if (str[i] == c){
+			tab[j] = ft_strndup(&str[k], i - k);
+			j++;
+			k = i + 1;
+		}
+		i++;
+	}
+	tab[j] = ft_strndup(&str[k], i - k);
+	tab[j + 1] = NULL;
+	return (tab);
+}
+
+char *ft_strjoin(char *s1, char *s2){
+	char *str;
+	int i = 0;
+	int j = 0;
+	if (!(str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
+		return (NULL);
+	while (s1[i]){
+		str[i] = s1[i];
+		i++;
+	}
+	while (s2[j]){
+		str[i] = s2[j];
+		i++;
+		j++;
+	}
+	str[i] = '\0';
+	return (str);
+}
