@@ -7,3 +7,14 @@ void ft_strdel(char **str){
 	}
 }
 
+void ft_tabdel(char ***tab){
+	if (tab && *tab){
+		int i = 0;
+		while ((*tab)[i]){
+			ft_strdel(&(*tab)[i]);
+			i++;
+		}
+		free(*tab);
+		*tab = NULL;
+	}
+}

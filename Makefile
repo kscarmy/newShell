@@ -5,6 +5,7 @@ SRC	= 	sources/main.c \
 SRC +=	sources/commands/commandEcho.c \
 		sources/commands/commandExit.c \
 		sources/commands/commandEnv.c \
+		sources/commands/commandUnset.c \
 
 SRC +=	sources/utils/utilsPrints.c \
 		sources/utils/utilsStrings.c \

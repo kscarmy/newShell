@@ -18,6 +18,9 @@ void ft_env(t_data *d);
 void ft_addEnv(t_data *d, char *str);
 char *ft_findEnvValueByName(t_data *d, char *name);
 
+/*	unset.c	*/
+void ft_unset(t_data *d, char **args);
+
 /*************/
 /*	UTILS	*/
 /***********/
@@ -51,6 +54,7 @@ char *ft_findEnvVarValue(char *str);
 
 /*	freeUtils.c	*/
 void ft_strdel(char **str);
+void ft_tabdel(char ***tab);
 
 /*	freeStructData.c	*/
 void ft_structDel(t_data *d);
@@ -84,6 +88,8 @@ char *ft_findPathName(char *bin, t_data *d);
 
 /*	exec.c	*/
 void ft_exec(t_token *t, t_data *d);
+void ft_execBin(t_token *t, t_data *d);
+char **ft_createEnv(t_data *d);
 
 
 #endif
