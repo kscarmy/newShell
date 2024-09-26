@@ -2,6 +2,8 @@
 
 void ft_addEnv(t_data *d, char *str){
 	t_env *new = (t_env *)malloc(sizeof(t_env));
+	if (!new)
+		return ;
 	new->name = ft_findEnvVarName(str);
 	new->value = ft_findEnvVarValue(str);
 	new->prev = NULL;	// became the first element so there is no previous element (oui j'ecris en anglais et en francais)

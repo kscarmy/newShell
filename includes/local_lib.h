@@ -10,11 +10,22 @@ typedef struct s_env
 	struct s_env *prev;
 }	t_env;
 
+typedef struct s_token
+{
+	int type; // separator, local command, binary command
+	int sep;	
+	char *pn; // path name, for execve or local command
+	char **arg; // arguments for execve
+	struct s_token *n; // next
+	struct s_token *p; // previous
+}	t_token;
+
 typedef struct s_data
 {
 	char *ipt; // input
 	char **mEnv; // main env
 	t_env *env; // linked list env
+	t_token *tok; // linked list token
 }	t_data;
 
 /*****************/
@@ -72,6 +83,15 @@ void ft_structDel(t_data *d);
 /*	initStructData.c	*/
 void ft_initStructData(t_data *d, char **env);
 void ft_initDLinkedListEnv(t_data *d);
+
+/*************/
+/*	PARSING	*/
+/***********/
+
+/*	parse.c	*/
+int ft_numberOfArgs(char *str);
+void ft_parseOneToken(t_data *d);
+void ft_mallocToken(t_data *d);
 
 
 #endif

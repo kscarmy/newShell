@@ -16,6 +16,8 @@ SRC +=	sources/free/freeStructData.c \
 
 SRC += 	sources/initializations/initStructData.c \
 
+SRC += sources/parsing/parse.c \
+
 OBJ	= ${patsubst sources/%, objects/%, $(SRC:.c=.o)}
 
 CC		= gcc
@@ -40,6 +42,7 @@ objects/%.o: sources/%.c
 	@mkdir -p objects/utils
 	@mkdir -p objects/free
 	@mkdir -p objects/initializations
+	@mkdir -p objects/parsing
 	@$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
