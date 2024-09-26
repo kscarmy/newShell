@@ -11,6 +11,8 @@ void	ft_isLocalCommand(t_token *t){
 		t->type = CODE_UNSET;
 	else if (ft_strcmp(t->arg[0], CMD_EXPORT) == 0)
 		t->type = CODE_EXPORT;
+	else if (ft_strcmp(t->arg[0], CMD_PWD) == 0)
+		t->type = CODE_PWD;
 	else
 		t->type = CODE_BINCMD;
 }

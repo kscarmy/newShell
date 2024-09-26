@@ -53,6 +53,8 @@ void ft_exec(t_token *t, t_data *d){
 		ft_unset(d, t->arg);
 	else if (t->type == CODE_EXPORT)
 		ft_export(d, t->arg);
+	else if (t->type == CODE_PWD)
+		ft_pwd(d);
 	else if (t->type == CODE_BINCMD){
 		ft_execBin(t, d);
 	}

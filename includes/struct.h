@@ -21,8 +21,8 @@ typedef struct s_token
 
 typedef struct s_data
 {
-	char *pwd; // present working directory
-	char *opwd; // old present working directory
+	char pwd[PATH_MAX]; // present working directory
+	char opwd[PATH_MAX]; // old present working directory
 	char *ipt; // input
 	char **mEnv; // main env
 	t_env *env; // linked list env

@@ -26,6 +26,9 @@ void ft_unsetOne(t_data *d, char *args);
 void ft_export(t_data *d, char **args);
 int ft_exportCheckSep(char *str);
 
+/*	pwd.c	*/
+void ft_pwd(t_data *d);
+
 /*************/
 /*	UTILS	*/
 /***********/
