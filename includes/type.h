@@ -5,6 +5,7 @@
 # define CMD_EXIT "exit"
 # define CMD_ENV "env"
 # define CMD_UNSET "unset"
+# define CMD_EXPORT "export"
 
 # define CODE_BINCMD 1
 # define CODE_SEP 2
@@ -13,5 +14,6 @@
 # define CODE_EXIT 4
 # define CODE_ENV 5
 # define CODE_UNSET 6
+# define CODE_EXPORT 7
 
 #endif

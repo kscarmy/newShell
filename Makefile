@@ -6,6 +6,7 @@ SRC +=	sources/commands/commandEcho.c \
 		sources/commands/commandExit.c \
 		sources/commands/commandEnv.c \
 		sources/commands/commandUnset.c \
+		sources/commands/commandExport.c \
 
 SRC +=	sources/utils/utilsPrints.c \
 		sources/utils/utilsStrings.c \

@@ -20,6 +20,11 @@ char *ft_findEnvValueByName(t_data *d, char *name);
 
 /*	unset.c	*/
 void ft_unset(t_data *d, char **args);
+void ft_unsetOne(t_data *d, char *args);
+
+/*	export.c	*/
+void ft_export(t_data *d, char **args);
+int ft_exportCheckSep(char *str);
 
 /*************/
 /*	UTILS	*/
