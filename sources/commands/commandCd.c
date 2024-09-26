@@ -1,6 +1,11 @@
 #include "../../includes/newShell.h"
 
 void ft_cd(t_data *d, char *path){
+	if (!path || ft_strcmp(path, "~") == 0)
+		path = ft_findEnvValueByName(d, "HOME");
+	else if (ft_strcmp(path, "-") == 0)
+		path = d->opwd;
+
 	if (chdir(path) == -1){
 		ft_putstr("Error: cd\n");
 		return;
