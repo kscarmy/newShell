@@ -29,6 +29,8 @@ void ft_mallocArg(t_data *d){ // every space in d->ipt delimitate args for d->to
 	while (d->ipt[i]){
 		while (d->ipt[i] == SEP_SPACE && d->ipt[i])
 			i++;
+		if (d->ipt[i] == '\0')
+			break;
 		len = ft_argLength(d->ipt + i);
 		d->tok->arg[j] = (char *)malloc(sizeof(char) * (len + 1));
 		if (!d->tok->arg[j])
@@ -52,15 +54,14 @@ void ft_mallocToken(t_data *d){
 	tmp->n = NULL;	// TEMPORAIRE
 	tmp->p = NULL; // TEMPORAIRE
 	tmp->arg = (char **)malloc(sizeof(char *) * (ft_numberOfArgs(d->ipt) + 1));
-	tmp->arg[ft_numberOfArgs(d->ipt)] = NULL;
 	if (!tmp->arg)
 		return ;
+	tmp->arg[ft_numberOfArgs(d->ipt)] = NULL;
 	d->tok = tmp;
 	ft_mallocArg(d);
 }
 
 void ft_parseOneToken(t_data *d){
-	printf("Number of args: %d\n", ft_numberOfArgs(d->ipt));
 	ft_mallocToken(d);
-	ft_printToken(d->tok);
+	// ft_printToken(d->tok);
 }

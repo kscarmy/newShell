@@ -40,10 +40,10 @@ int	main(int argc, char **argv, char **env){
         if (!d->ipt) {
             break; // Sortir si readline échoue (CTRL+D)
         }
+		if (ft_strlen(d->ipt) == 0)
+			continue;
         // Ajouter l'entrée à l'historique
         add_history(d->ipt);
-
-
 
         // Traiter l'entrée
 
