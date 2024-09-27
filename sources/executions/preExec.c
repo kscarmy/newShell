@@ -109,47 +109,55 @@ void ft_reSizeTokenArgsExpand(t_data *d, t_token *t){
 					u++;
 				}
 			}
-			ft_putstr("A\n");
+			// ft_putstr("A\n");
 			if (t->arg[i][u] == SEP_DQUOTE){
 				u++;
 				nbrQ += 2;
-				ft_putstr("B\n");
+				// ft_putstr("AB\n");
 				while (t->arg[i][u] != SEP_DQUOTE && t->arg[i][u]){
-					ft_putstr("C\n");
+					// ft_putstr("AC\n");
 					if (t->arg[i][u] == SEP_DQUOTE){
 						u++;
 						break;
 					}
-					ft_putstr("D\n");
+					// ft_putstr("AD\n");
 					if (t->arg[i][u] == SEP_DOLLAR){
 						nSize += ft_findVarNameLength(t->arg[i] + u);
+						// printf("nSize: %d, str[u] <%s>\n", nSize, &t->arg[i][u]);
 						// ft_putstr("C1\n");
 						// vSize += ft_getVarValueSize(d, t->arg[i] + u);
 						// printf("VarVal <%s>\n", ft_getVarValue(d, t->arg[i] + u));
 						// printf("tmp: <%s>\n", tmp + j);
-						printf("str <%s>\n", t->arg[i] + u);
+						// printf("AD str <%s>\n", t->arg[i] + u);
 						char *tmp2 = ft_getVarValue(d, t->arg[i] + u);
-						printf("tmp2 <%s>\n", tmp2);
+						// printf("AD tmp2 <%s>\n", tmp2);
 						// printf("tmp2: <%s>\n", tmp2);
 						ft_strcat(tmp, tmp2);
 						// printf("tmp: <%s>\n", tmp);
 						// ft_putstr("C2\n");
 						j+= ft_strlen(tmp2);
 						u += nSize;
+						nSize = 0;
+						// printf("nSize: %d, str[u] <%s>\n", nSize, &t->arg[i][u]);
+						// continue;
 					}
-					ft_putstr("E\n");
+					// ft_putstr("AE\n");
 					if (t->arg[i][u] == SEP_DQUOTE){
 						u++;
 						break;
 					}
-					ft_putstr("F\n");
-					tmp[j] = t->arg[i][u];
-					j++;
-					u++;
+					// ft_putstr("AF\n");
+					if (t->arg[i][u] != SEP_DOLLAR){
+						tmp[j] = t->arg[i][u];
+						j++;
+						u++;
+					}
+
+
 				}
 			}
-			// ft_putstr("C\n");
-			if (t->arg[i][u] == SEP_DOLLAR){
+			else if (t->arg[i][u] == SEP_DOLLAR){
+				// ft_putstr("C\n");
 				nSize += ft_findVarNameLength(t->arg[i] + u);
 				// ft_putstr("C1\n");
 				// vSize += ft_getVarValueSize(d, t->arg[i] + u);
@@ -162,19 +170,22 @@ void ft_reSizeTokenArgsExpand(t_data *d, t_token *t){
 				// ft_putstr("C2\n");
 				j+= ft_strlen(tmp2);
 				u += nSize;
+				nSize = 0;
 			}
-			// ft_putstr("D\n");
-			if (j == argSize - 1)
-				tmp[j] = '\0';
-			else
-				tmp[j] = t->arg[i][u];
-			j++;
-			u++;
+			else if (t->arg[i][u] != SEP_DQUOTE && t->arg[i][u] != SEP_DOLLAR){
+				// ft_putstr("D\n");
+				if (j == argSize - 1)
+					tmp[j] = '\0';
+				else
+					tmp[j] = t->arg[i][u];
+				j++;
+				u++;
+			}
 		}
 		// printf("tmp: <%s>\n", tmp);
 		ft_strdel(&t->arg[i]);
 		t->arg[i] = tmp;
-		printf("t->arg[%d]: <%s>\n", i, t->arg[i]);
+		// printf("t->arg[%d]: <%s>\n", i, t->arg[i]);
 		i++;
 	}
 }

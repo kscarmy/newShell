@@ -105,19 +105,21 @@ void ft_strcpy(char *dest, char *src){
 }
 
 int ft_isNotSeparator(char c){
-	if (c != SEP_SPACE && c != SEP_TAB && c != SEP_NEWLINE)
-		return (1);
-	else if (c != SEP_SEMICOLON && c != SEP_PIPE && c != SEP_AND)
-		return (1);
-	else if (c != SEP_INPUT)
-		return (1);
-	else if (c != SEP_OUTPUT)
-		return (1);
-	else if (c != SEP_PARENTHESIS_OPEN)
-		return (1);
-	else if (c != SEP_PARENTHESIS_CLOSE && c != SEP_SQUOTE && c != SEP_DQUOTE)
-		return (1);
-	return (0);
+	if (c == SEP_SPACE || c == SEP_TAB || c == SEP_NEWLINE)
+		return (0);
+	else if (c == SEP_SEMICOLON || c == SEP_PIPE || c == SEP_AND)
+		return (0);
+	else if (c == SEP_INPUT)
+		return (0);
+	else if (c == SEP_OUTPUT)
+		return (0);
+	else if (c == SEP_PARENTHESIS_OPEN)
+		return (0);
+	else if (c == SEP_PARENTHESIS_CLOSE || c == SEP_SQUOTE || c == SEP_DQUOTE)
+		return (0);
+	else if (c == SEP_DOLLAR)
+		return (0);
+	return (1);
 }
 
 char *ft_strcat(char *dest, char *src){

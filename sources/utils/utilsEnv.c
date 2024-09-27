@@ -15,10 +15,15 @@ char *ft_findEnvVarValue(char *str){
 }
 
 int ft_findVarNameLength(char *str){
-	int i = 0;
+	int i = 1;
+	// printf("ft_findVarNameLength str: <%s>\n", str);
 	while (str[i] && ft_isNotSeparator(str[i])){
+		// printf("ft_findVarNameLength str[%d]: <%c>\n", i, str[i]);
 		i++;
 	}
+	// printf("ft_findVarNameLength str[%d]: <%c>\n", i, str[i]);
+	// if (str[i - 1] == SEP_DQUOTE)
+	// 	i--;
 	return (i);
 }
 
@@ -29,9 +34,9 @@ int ft_getVarValueSize(t_data *d, char *str){
 }
 
 char *ft_getVarValue(t_data *d, char *str){
-	printf("str: <%s>\n", str);
+	// printf("ft_getVarValue str: <%s>\n", str);
 	int nSize = ft_findVarNameLength(str);
 	char *name = ft_strndup(str, nSize);
-	printf("name: <%s>\n", name);
+	// printf("ft_getVarValue name: <%s> nSize %d\n", name, nSize);
 	return (ft_findEnvValueByName(d, &name[1]));
 }
