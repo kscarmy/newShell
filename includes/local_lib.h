@@ -52,6 +52,8 @@ char **ft_strsplit(char *str, char c);
 char *ft_strjoin(char *s1, char *s2);
 void ft_strcpy(char *dest, char *src);
 int ft_isNotSeparator(char c);
+char *ft_strcat(char *dest, char *src);
+void ft_bzero(void *s, size_t n);
 
 /*	utilsSeparators.c	*/
 int ft_findAllSeparators(char c);
@@ -61,6 +63,7 @@ char	*ft_findEnvVarName(char *str);
 char *ft_findEnvVarValue(char *str);
 int ft_findVarNameLength(char *str);
 int ft_getVarValueSize(t_data *d, char *str);
+char *ft_getVarValue(t_data *d, char *str);
 
 
 /*************/

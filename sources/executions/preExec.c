@@ -76,16 +76,107 @@ void ft_reSizeTokenArgsExpand(t_data *d, t_token *t){
 			}
 			u++;
 		}
-		char *newArg;
+		// ft_strdel(&t->arg[i]);
+		char *tmp;
 		int argSize = (ft_strlen(t->arg[i]) + vSize - nSize + 1 - nbrQ);
 		if (argSize > 0)
-			newArg = (char *)malloc(sizeof(char) * (argSize));
+			tmp = (char *)malloc(sizeof(char) * (argSize));
 		else
-			newArg = (char *)malloc(sizeof(char) * 1);
-		if (!newArg)
+			tmp = (char *)malloc(sizeof(char) * 1);
+		if (!tmp)
 			return ;
-		printf("argSize: %d, u: %d, strlen: %d\n", argSize, u, ft_strlen(t->arg[i]));
-		printf("vSize: %d, nSize: %d, nbrQ: %d\n", vSize, nSize, nbrQ);
+		ft_bzero(tmp, argSize);
+		// printf("argSize: %d, u: %d, strlen: %d\n", argSize, u, ft_strlen(t->arg[i]));
+		// printf("vSize: %d, nSize: %d, nbrQ: %d\n", vSize, nSize, nbrQ);
+
+		u = 0;
+		nSize = 0;
+		vSize = 0;
+		nbrQ = 0;
+		int j = 0;
+		while (t->arg[i][u]){
+			// ft_putstr("A\n");
+			if (t->arg[i][u] == SEP_SQUOTE){
+				u++;
+				nbrQ += 2;
+				while (t->arg[i][u] != SEP_SQUOTE && t->arg[i][u]){
+					if (t->arg[i][u] == SEP_SQUOTE){
+						u++;
+						break;
+					}
+					tmp[j] = t->arg[i][u];
+					j++;
+					u++;
+				}
+			}
+			ft_putstr("A\n");
+			if (t->arg[i][u] == SEP_DQUOTE){
+				u++;
+				nbrQ += 2;
+				ft_putstr("B\n");
+				while (t->arg[i][u] != SEP_DQUOTE && t->arg[i][u]){
+					ft_putstr("C\n");
+					if (t->arg[i][u] == SEP_DQUOTE){
+						u++;
+						break;
+					}
+					ft_putstr("D\n");
+					if (t->arg[i][u] == SEP_DOLLAR){
+						nSize += ft_findVarNameLength(t->arg[i] + u);
+						// ft_putstr("C1\n");
+						// vSize += ft_getVarValueSize(d, t->arg[i] + u);
+						// printf("VarVal <%s>\n", ft_getVarValue(d, t->arg[i] + u));
+						// printf("tmp: <%s>\n", tmp + j);
+						printf("str <%s>\n", t->arg[i] + u);
+						char *tmp2 = ft_getVarValue(d, t->arg[i] + u);
+						printf("tmp2 <%s>\n", tmp2);
+						// printf("tmp2: <%s>\n", tmp2);
+						ft_strcat(tmp, tmp2);
+						// printf("tmp: <%s>\n", tmp);
+						// ft_putstr("C2\n");
+						j+= ft_strlen(tmp2);
+						u += nSize;
+					}
+					ft_putstr("E\n");
+					if (t->arg[i][u] == SEP_DQUOTE){
+						u++;
+						break;
+					}
+					ft_putstr("F\n");
+					tmp[j] = t->arg[i][u];
+					j++;
+					u++;
+				}
+			}
+			// ft_putstr("C\n");
+			if (t->arg[i][u] == SEP_DOLLAR){
+				nSize += ft_findVarNameLength(t->arg[i] + u);
+				// ft_putstr("C1\n");
+				// vSize += ft_getVarValueSize(d, t->arg[i] + u);
+				// printf("VarVal <%s>\n", ft_getVarValue(d, t->arg[i] + u));
+				// printf("tmp: <%s>\n", tmp + j);
+				char *tmp2 = ft_getVarValue(d, t->arg[i] + u);
+				// printf("tmp2: <%s>\n", tmp2);
+				ft_strcat(tmp, tmp2);
+				// printf("tmp: <%s>\n", tmp);
+				// ft_putstr("C2\n");
+				j+= ft_strlen(tmp2);
+				u += nSize;
+			}
+			// ft_putstr("D\n");
+			if (j == argSize - 1)
+				tmp[j] = '\0';
+			else
+				tmp[j] = t->arg[i][u];
+			j++;
+			u++;
+		}
+		// printf("tmp: <%s>\n", tmp);
+		ft_strdel(&t->arg[i]);
+		t->arg[i] = tmp;
+		printf("t->arg[%d]: <%s>\n", i, t->arg[i]);
 		i++;
 	}
 }
+
+

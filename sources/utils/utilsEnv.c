@@ -27,3 +27,11 @@ int ft_getVarValueSize(t_data *d, char *str){
 	char *name = ft_strndup(str, nSize);
 	return (ft_strlen(ft_findEnvValueByName(d, &name[1])));
 }
+
+char *ft_getVarValue(t_data *d, char *str){
+	printf("str: <%s>\n", str);
+	int nSize = ft_findVarNameLength(str);
+	char *name = ft_strndup(str, nSize);
+	printf("name: <%s>\n", name);
+	return (ft_findEnvValueByName(d, &name[1]));
+}
