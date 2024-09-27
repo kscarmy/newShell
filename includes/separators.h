@@ -23,6 +23,9 @@
 # define SEP_PARENTHESIS_OPEN '('
 # define SEP_PARENTHESIS_CLOSE ')'
 
+# define SEP_SQUOTE '\''
+# define SEP_DQUOTE '\"'
+
 # define CODE_SEP_SPACE 1
 # define CODE_SEP_TAB 2
 # define CODE_SEP_NEWLINE 3
@@ -44,7 +47,8 @@
 # define CODE_SEP_PARENTHESIS_OPEN 13
 # define CODE_SEP_PARENTHESIS_CLOSE 14
 
-
+# define CODE_SEP_QUOTE 15
+# define CODE_SEP_DOUBLE_QUOTE 16
 
 
 #endif

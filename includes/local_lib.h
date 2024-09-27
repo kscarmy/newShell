@@ -79,6 +79,9 @@ void ft_structDel(t_data *d);
 void ft_initStructData(t_data *d, char **env);
 void ft_initDLinkedListEnv(t_data *d);
 
+/*	initQuotesSecurity.c	*/
+int ft_chechQuotes(char *str);
+
 /*************/
 /*	PARSING	*/
 /***********/

@@ -40,10 +40,18 @@ int	main(int argc, char **argv, char **env){
         if (!d->ipt) {
             break; // Sortir si readline échoue (CTRL+D)
         }
-		if (ft_strlen(d->ipt) == 0)
+		if (ft_strlen(d->ipt) == 0){
+			ft_strdel(&d->ipt);
 			continue;
+		}
         // Ajouter l'entrée à l'historique
         add_history(d->ipt);
+
+		if (ft_chechQuotes(d->ipt)){
+			ft_putstr("Error: quotes\n");
+			ft_strdel(&d->ipt);
+			continue;
+		}
 
         // Traiter l'entrée
 

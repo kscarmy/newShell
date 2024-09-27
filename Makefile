@@ -20,7 +20,8 @@ SRC +=	sources/free/freeStructData.c \
 
 SRC += 	sources/initializations/initStructData.c \
 
-SRC += sources/parsing/parse.c \
+SRC +=	sources/parsing/parse.c \
+		sources/parsing/preParseSecurity.c \
 
 SRC	+=	sources/executions/preExec.c \
 		sources/executions/exec.c \
