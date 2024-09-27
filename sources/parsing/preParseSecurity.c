@@ -17,7 +17,6 @@ int ft_chechQuotes(char *str){
 			dq--;
 		i++;
 	}
-	printf("sq = %d, dq = %d\n", sq, dq);
 	if (sq == 0 && dq == 0)
 		return (0);
 	return (1);
