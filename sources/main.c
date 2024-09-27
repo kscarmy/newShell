@@ -57,9 +57,9 @@ int	main(int argc, char **argv, char **env){
 
 		ft_parseOneToken(d);	// parsing
 
-
-		ft_isLocalCommand(d->tok);	// pre-execution
-		ft_exec(d->tok, d);			// execution
+		ft_reSizeTokenArgsExpand(d, d->tok);	// pre-execution 1
+		// ft_isLocalCommand(d->tok);	// pre-execution 2
+		// ft_exec(d->tok, d);			// execution
 
         // Libérer la mémoire allouée pour l'entrée
 		ft_strdel(&d->ipt);

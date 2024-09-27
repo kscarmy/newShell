@@ -51,6 +51,7 @@ int ft_strlen(const char *str);
 char **ft_strsplit(char *str, char c);
 char *ft_strjoin(char *s1, char *s2);
 void ft_strcpy(char *dest, char *src);
+int ft_isNotSeparator(char c);
 
 /*	utilsSeparators.c	*/
 int ft_findAllSeparators(char c);
@@ -58,6 +59,8 @@ int ft_findAllSeparators(char c);
 /*	utilsEnv.c	*/
 char	*ft_findEnvVarName(char *str);
 char *ft_findEnvVarValue(char *str);
+int ft_findVarNameLength(char *str);
+int ft_getVarValueSize(t_data *d, char *str);
 
 
 /*************/
@@ -100,6 +103,7 @@ void ft_mallocArg(t_data *d);
 /*	preExec.c	*/
 void ft_isLocalCommand(t_token *t);
 char *ft_findPathName(char *bin, t_data *d);
+void ft_reSizeTokenArgsExpand(t_data *d, t_token *t);
 
 /*	exec.c	*/
 void ft_exec(t_token *t, t_data *d);

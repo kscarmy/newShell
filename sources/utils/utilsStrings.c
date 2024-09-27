@@ -48,6 +48,8 @@ char *ft_strdup(const char *s){
 
 int ft_strlen(const char *str){
 	int i = 0;
+	if (!str)
+		return (0);
 	while (str[i]){
 		i++;
 	}
@@ -101,3 +103,20 @@ void ft_strcpy(char *dest, char *src){
 	}
 	dest[i] = '\0';
 }
+
+int ft_isNotSeparator(char c){
+	if (c != SEP_SPACE && c != SEP_TAB && c != SEP_NEWLINE)
+		return (1);
+	else if (c != SEP_SEMICOLON && c != SEP_PIPE && c != SEP_AND)
+		return (1);
+	else if (c != SEP_INPUT)
+		return (1);
+	else if (c != SEP_OUTPUT)
+		return (1);
+	else if (c != SEP_PARENTHESIS_OPEN)
+		return (1);
+	else if (c != SEP_PARENTHESIS_CLOSE && c != SEP_SQUOTE && c != SEP_DQUOTE)
+		return (1);
+	return (0);
+}
+

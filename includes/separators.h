@@ -26,6 +26,8 @@
 # define SEP_SQUOTE '\''
 # define SEP_DQUOTE '\"'
 
+# define SEP_DOLLAR '$'
+
 # define CODE_SEP_SPACE 1
 # define CODE_SEP_TAB 2
 # define CODE_SEP_NEWLINE 3

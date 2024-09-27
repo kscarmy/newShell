@@ -44,3 +44,48 @@ char *ft_findPathName(char *bin, t_data *d){
 	}
 	return (NULL);
 }
+
+void ft_reSizeTokenArgsExpand(t_data *d, t_token *t){
+	int i = 0;
+	while(t->arg[i]){
+		int u = 0;
+		int nSize = 0;
+		int vSize = 0;
+		int nbrQ = 0;
+		while (t->arg[i][u]){
+			if (t->arg[i][u] == SEP_SQUOTE){
+				u++;
+				nbrQ += 2;
+				while (t->arg[i][u] != SEP_SQUOTE && t->arg[i][u])
+					u++;
+			}
+			if (t->arg[i][u] == SEP_DQUOTE){
+				u++;
+				nbrQ += 2;
+				while (t->arg[i][u] != SEP_DQUOTE && t->arg[i][u]){
+					if (t->arg[i][u] == SEP_DOLLAR){
+						nSize += ft_findVarNameLength(t->arg[i] + u);
+						vSize += ft_getVarValueSize(d, t->arg[i] + u);
+					}
+					u++;
+				}
+			}
+			if (t->arg[i][u] == SEP_DOLLAR){
+				nSize += ft_findVarNameLength(t->arg[i] + u);
+				vSize += ft_getVarValueSize(d, t->arg[i] + u);
+			}
+			u++;
+		}
+		char *newArg;
+		int argSize = (ft_strlen(t->arg[i]) + vSize - nSize + 1 - nbrQ);
+		if (argSize > 0)
+			newArg = (char *)malloc(sizeof(char) * (argSize));
+		else
+			newArg = (char *)malloc(sizeof(char) * 1);
+		if (!newArg)
+			return ;
+		printf("argSize: %d, u: %d, strlen: %d\n", argSize, u, ft_strlen(t->arg[i]));
+		printf("vSize: %d, nSize: %d, nbrQ: %d\n", vSize, nSize, nbrQ);
+		i++;
+	}
+}

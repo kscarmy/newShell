@@ -39,7 +39,6 @@ int ft_argLength(char *str){
 		}
 		i++;
 	}
-	printf("len: %d\n", i);
 	return (i);
 }
 
@@ -59,21 +58,29 @@ void ft_mallocArg(t_data *d){ // every space in d->ipt delimitate args for d->to
 			return ;
 		while (d->ipt[i] != SEP_SPACE && d->ipt[i]){
 			if (d->ipt[i] == SEP_SQUOTE){
+				d->tok->arg[j][k] = d->ipt[i];
+				k++;
 				i++;
 				while (d->ipt[i] != SEP_SQUOTE && d->ipt[i]){
 					d->tok->arg[j][k] = d->ipt[i];
 					i++;
 					k++;
 				}
+				d->tok->arg[j][k] = d->ipt[i];
+				k++;
 				i++;
 			}
 			else if (d->ipt[i] == SEP_DQUOTE){
+				d->tok->arg[j][k] = d->ipt[i];
+				k++;
 				i++;
 				while (d->ipt[i] != SEP_DQUOTE && d->ipt[i]){
 					d->tok->arg[j][k] = d->ipt[i];
 					i++;
 					k++;
 				}
+				d->tok->arg[j][k] = d->ipt[i];
+				k++;
 				i++;
 			}
 			else {
@@ -82,19 +89,9 @@ void ft_mallocArg(t_data *d){ // every space in d->ipt delimitate args for d->to
 				k++;
 			}
 		}
-		// else {
-		// 	// i++;
-		// 	while (d->ipt[i] != SEP_SPACE && d->ipt[i]){
-		// 		d->tok->arg[j][k] = d->ipt[i];
-		// 		i++;
-		// 		k++;
-		// 	}
-		// 	i++;
-		// }
 		d->tok->arg[j][k] = '\0';
 		k = 0;
 		j++;
-		printf("B arg[i] s<%s> c<%c> d%d\n", &d->ipt[i], d->ipt[i], i);
 	}
 	d->tok->arg[j] = NULL;
 }
@@ -115,6 +112,5 @@ void ft_mallocToken(t_data *d){
 
 void ft_parseOneToken(t_data *d){
 	ft_mallocToken(d);
-	ft_printToken(d->tok);
-	printf("nbr args: %d\n", ft_numberOfArgs(d->ipt));
+	// ft_printToken(d->tok);
 }
